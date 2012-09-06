@@ -1,0 +1,75 @@
+<html>
+	<head>
+
+	<meta charset = "utf-8">
+	<title>EaselJS 101</title>
+
+	<script src="easel.js"></script>
+
+	<script> 
+
+		var stage; 
+		//var logo; 
+		var canvas; 
+		var g; 
+		var circle; 
+
+		function init() { 
+			//make ye old familar stage 
+			canvas = document.getElementById("canvas"); 
+			stage = new createjs.Stage(canvas);
+			
+			g = new createjs.Graphics(); 
+			g.setStrokeStyle(1); 
+			g.beginStroke(createjs.Graphics.getRGB(0,0,0)); 
+
+			s = new createjs.Shape(g); 
+			s.width = 640; 
+			s.height = 480; 
+			stage.addChild(s);
+
+			//this constructor is overloaded - image, video, url to file 
+			//usually make an image object, wait for it to load then do this step in the real world.
+
+			circle = new createjs.Shape();
+			//note you can gang these properties together
+			//or seperate them like you are used to doing
+			circle.graphics.beginFill("red").drawCircle(50,50,50); 
+			circle.x = 100; 
+			circle.y = 100; 
+			stage.addChild(circle);
+
+			//
+			createjs.Ticker.setFPS(60);
+			//starts ticker when window loads 
+			createjs.Ticker.addListener(window);
+
+			logo = new createjs.Bitmap ("image.png"); 
+
+			// //registration marl (logo is the wrapper. all stuff stored in it are properties)
+			logo.regX = logo.image.width *0.5; 
+			logo.regY = logo.image.height * 0.5; 
+			stage.addChild(logo); 
+		}
+
+		function tick(){ 
+			//animation goes before update
+			logo.x += (stage.mouseX - logo.x) *0.5; 
+			logo.y +=(stage.mouseY - logo.y) *0.5; 
+			g.lineTo(logo.x, logo.y); 
+			circle.x = circle.x + 10; 
+
+			stage.update(); 
+			//this renders the stage. Make it the last thing in the tick fucntion 
+		
+		}
+		</script> 
+		</head>
+		<body onload="init()">
+		<!--wait until the body loads to run the javascript -->
+			<canvas width= "640" height = "480" id="canvas"> </canvas>
+		</body>
+
+
+
+
