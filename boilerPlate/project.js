@@ -33,7 +33,6 @@ function init() {
             stage.addChild(circle);
 
     
-	stage.update();
     createjs.Ticker.setFPS(60);
             //starts ticker when window loads 
             createjs.Ticker.addListener(window);
