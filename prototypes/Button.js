@@ -10,6 +10,7 @@
 	}
 	var p = Button.prototype = new createjs.Container(); 
 	//inherit from container 
+
 	p.label; 
 	p.background; 
 	p.count = 0; 

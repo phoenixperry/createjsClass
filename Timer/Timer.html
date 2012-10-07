@@ -42,9 +42,16 @@
 			output.textBaseLine = "top"; 
 			output.x = 100; 
 			output.y = stage.canvas.height - output.lineHeight*3-10; 
+			
+
+			var text2 = stage.addChild(new createjs.Text("adsfadsf", "14px monospace" , "#000"));
+			text2.lineHeight = 15; 
+			text2.x = 150; 
+			text2.y = 200; 
+
+			createjs.Ticker.setPaused(true);
 
 		}
-
 
 		function tick() { 
 			goCircle.x +=10; 
@@ -60,8 +67,17 @@
 		function togglePaused() { 
 			var paused = !createjs.Ticker.getPaused(); 
 			createjs.Ticker.setPaused(paused);
-			document.getElementById("pauseBtn").value = paused ? "unpause" : "pause";
+			if(paused == true) { 
+				document.getElementById("pauseBtn").value = "paused"; 
+			}else { 
+				document.getElementById("pauseBtn").value = "unpause"; 
+			}
+
+			//shorthand method for doing this  
+			//document.getElementById("pauseBtn").value = paused ? "unpause" : "pause";
+
 		}
+
 	</script>
 </head>
 <body>
