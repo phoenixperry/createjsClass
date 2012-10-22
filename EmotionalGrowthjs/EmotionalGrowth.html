@@ -4,10 +4,45 @@
 		<title>Emotional Growth</title>
 		<script type="text/javascript" src ="easel.js"> </script> 
 		<script type="text/javascript" src ="EmotionalGrowth.js"> </script>
-		
+		<script type="text/javascript" src="Csheet.js"></script>
+		</script>
+		<script type="text/javascript">
+			var canvas, stage, mc, w;
+			var scale = 0.5;
+
+	function init() {
+			//find canvas and load images, wait for last image to load
+		canvas = document.getElementById("testCanvas");
+		stage = new Stage(canvas);
+		mc = new lib.Csheet();
+		w = mc.nominalBounds.width*scale;
+		mc.setTransform(100+w/2,100,scale,scale);
+		stage.addChild(mc);
+
+		var builder = new SpriteSheetBuilder(); 
+		builder.scale = scale; 
+		builder.maxWidth = 1024; 
+		builder.addMovieClip(mc); 
+		builder.buildAsync(buildComplete); 
+		document.body.appendChild(builder.data.images[0]);
+		Ticker.setFPS(30); 
+		Ticker.addListener(stage); 
+
+	} 
+
+	function buildComplete(builder) { 
+		var spriteSheet = builder.spriteSheet; 
+		var bmpAnim = new BitmapAnimation(spriteSheet); 
+		bmpAnim.setTransform(mc.x+w+30|0, mc.y); 
+
+		stage.addChild(bmpAnim); 
+
+		mc.gotoAndPlay(0); 
+		bmpAnim.gotoAndPlay(0); 
+	}
 		</script>
 	</head>
-	<body>
-		<canvas id="canvas" width= "640" height ="480"> </canvas> 
+	<body onload="init();">
+		<canvas id="testCanvas" width= "640" height ="480"> </canvas> 
 	</body>
 </html> 

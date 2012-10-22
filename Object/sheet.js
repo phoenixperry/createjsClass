@@ -1,15 +1,16 @@
 var stage, outfit, container;
 var fred; 
+var speed=0; 
+var myCar; 
 window.onload = function () {init();} 
 
 function init() { 
 	
-	fred = new myCharacter("sam", 100,100, "roy");  
+	fred = new myCharacter("fred", 100,100);  
 	fred.setValue("roy");
 	console.log(fred.getValue()); 
 	//note you can get the value name...
-
-
+	console.log(fred.name); 
 		stage = new createjs.Stage("demoCanvas"); 
 		circle = new createjs.Shape(); 
 		circle.graphics.beginFill("red").drawCircle(50,50,50); 
@@ -19,6 +20,8 @@ function init() {
 		createjs.Ticker.setFPS(60);
 		createjs.Ticker.addListener(this); 
 		addingAndDeletingProperties(); 
+		getPropertiesList(); 
+
 }
 
  function tick() { 
@@ -36,7 +39,7 @@ function myCharacter(name, xpos, ypos)
 	this.ypos = ypos; 
 	this.getDressed = getDressed; 
 	this.age; //properties can be setup later 
-	//handling getters and setters 
+//	handling getters and setters 
 	this.getValue = function(){ 
 		return val; 
 	}; 
@@ -46,9 +49,7 @@ function myCharacter(name, xpos, ypos)
 	};	
 }
 
-
 function getDressed(bits) { 
-
 	console.log("getting changed"); 
 }
 function addingAndDeletingProperties(){ 
@@ -60,3 +61,23 @@ function addingAndDeletingProperties(){
 		//undefined. 
 		console.log(fred.age); 
 }
+function getPropertiesList() { 
+	//this is how you get the list of properties of an object (even ones not set to ennumerable, which has a default of true. Ennumerable means you can increment them ) *check this - might mean co-routinable c# style 
+	var list = Object.getOwnPropertyNames(fred); 
+	for(var i = 0; i < list.length; i++){ 
+		console.log(list[i] + " I am a property of Fred!"); 
+	}
+}
+	//this is an object literal - it initalizes and creates the object simultaneously 
+
+	var car = { model: 'Tesla' 
+				, sunroof: 1 
+		
+	}
+	car.run = function (){ 
+		speed ++; 
+	}
+	console.log(car.model); 	
+	car.run(); 
+	console.log(speed+ " speed of car");
+	
