@@ -2,6 +2,7 @@ var stage, outfit, container;
 var fred; 
 var speed=0; 
 var myCar; 
+var circle; 
 window.onload = function () {init();} 
 
 function init() { 
@@ -26,6 +27,7 @@ function init() {
 
  function tick() { 
  		stage.update();
+ 		circle.x +=5; 
  }
 //here's an object being created 
 function myCharacter(name, xpos, ypos)
