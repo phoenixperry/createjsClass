@@ -14,7 +14,9 @@ function init() {
 	walker = new Walker(x,y); 
 	walker.step(walker.x,walker.y); 
 	walker.display(walker.x,walker.y); 
+	
 }
+
 function tick() { 
 	stage.update(); 
 	walker.step(); 
@@ -28,13 +30,14 @@ function Walker(x,y) {
 	this.y = y; 
 	this.step = step; 
 	this.display=display; 
-	this.circle = new createjs.Shape();
+	this.circle = new createjs.Shape();	
 }
+
 function display(x,y){  
-	this.circle.graphics.beginFill("black").drawCircle(x,y,2); 
+	this.circle.graphics.beginFill("black").drawCircle(x,y,1); 
 	stage.addChild(this.circle); 
 	var num = stage.getNumChildren(); 
-	//console.log("only ", num, " child");
+	console.log("only ", num, " child");
 }
 function step() { 
 	//var choice = Math.round(Math.random()*4); 
