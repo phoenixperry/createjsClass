@@ -1,0 +1,37 @@
+<html>
+<head>
+  <script src="processing.js"></script>
+</head>
+<body>
+
+<canvas id="canvas1" width="200" height="200"></canvas>
+
+<script id="script1" type="text/javascript">
+
+// Attaching js code to the canvas by using a sketch object
+
+var sketch = new Processing.Sketch();
+
+sketch.attachFunction = function(processing) {
+  
+  processing.setup = function() {
+    processing.size(640, 360, processing.P3D);
+  };
+
+  processing.draw = function() {
+    processing.background(0);
+    processing.noStroke();
+    processing.fill(255); 
+    processing.rect(10,10,50,50); 
+
+  }; 
+
+  processing.mouseDragged = function() {
+  };
+
+};  
+var canvas = document.getElementById("canvas1");
+// attaching the sketch to the canvas
+var p = new Processing(canvas, sketch);
+</script>
+</body>
