@@ -26,16 +26,7 @@ function init() {
       }; 
        
     }
-  }
-function randomDist() { 
-  while(true) { 
-    var r1 =  Math.random(); 
-    var probability = r1; 
-    var r2 = Math.random(); 
-      if(r2 < probability){ 
-        return r1; 
-      }
-  }
+ 
 }
 
    
