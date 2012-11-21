@@ -13,15 +13,15 @@ function init() {
     var x = stage.canvas.width/2; 
     var y = stage.canvas.height/2;
     walker = new Walker(x,y); 
-    walker.step(walker.x,walker.y); 
-    walker.display(walker.x,walker.y); 
+    walker.step(); 
+    walker.display(); 
 
 }
 
 function tick() { 
     stage.update(); 
     walker.step(); 
-    walker.display(walker.x,walker.y); 
+    walker.display(); 
 }
 
 //end of the createjs setup
@@ -34,11 +34,10 @@ function Walker(x,y) {
     this.circle = new createjs.Shape(); 
 }
 
-function display(x,y){  
-    this.circle.graphics.beginFill("black").drawCircle(x,y,1); 
+function display(){  
+    this.circle.graphics.beginFill("black").drawCircle(this.x,this.y,1); 
     stage.addChild(this.circle); 
-    var num = stage.getNumChildren(); 
-    console.log("only ", num, " child");
+    var num = stage.getNumChildren();
 }
 function step() { 
     //var choice = Math.round(Math.random()*4); 
