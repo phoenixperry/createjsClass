@@ -1,12 +1,10 @@
 
 window.onload = function () {init();}
 
-var n;  
-var t = 0; 
-var x_=0; 
 var x,y=0; 
 var tx = 0; 
 var ty = 10000; 
+
 function init() { 
     //setup create js 
     stage = new createjs.Stage("canvas");
@@ -22,7 +20,6 @@ function init() {
 function tick(){ 
 	//put all the createjs things to animate here. 
 	stage.update();
- 
 	walker.step(); 
 }
 function sketch(processing){ 

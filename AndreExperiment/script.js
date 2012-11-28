@@ -20,6 +20,6 @@ window.onload = function () {init();}
 		createjs.Ticker.addListener(this); 
 	}
 function tick() { 
-	circle.x = accel; 
+	circle.x = accel * stage.canvas.width/2; 
 	stage.update(); 
 }

@@ -1,0 +1,39 @@
+<html> 
+<head> 
+	<script type="text/javascript" src="	paper.js"></script> 
+	<script type"text/javascript">
+		window.onload = function () { 
+		
+			paper.setup("canvas"); 
+			// var path = new paper.Path(); 
+			// path.strokeColor = "black"; 
+			// var start = new paper.Point(100,100); 
+			// path.moveTo(start); 
+			// path.lineTo(start.add([200, -50])); 
+			// paper.view.draw(); 
+
+			// var path = new Path.Rectangle([75,75], [100,100]); 
+			// path.strokeColor = "black"; 
+			// view.onFrame = function (event) { 
+			// 	path.rotate(3); 
+			// }  
+			var path; 
+
+			//define a mouse down and mouse drag handler 
+			var tool = new paper.Tool(); 
+			tool.onMouseDown = function(event) { 
+				path = new paper.Path(); 
+				path.strokeColor = "black"; 
+				path.add(event.point); 
+			}
+			tool.onMouseDrag = function(event) { 
+				path.add(event.point);
+			}
+		}; 
+	</script> 
+</head> 
+<body>
+	<canvas id="canvas" resize></canvas>
+</body>
+
+</html>

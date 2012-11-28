@@ -2,7 +2,8 @@ var stage, outfit, container;
 var fred; 
 var speed=0; 
 var myCar; 
-var circle; 
+var circle;
+
 window.onload = function () {init();} 
 
 function init() { 
@@ -45,7 +46,7 @@ function myCharacter(name, xpos, ypos)
 	this.getValue = function(){ 
 		return val; 
 	}; 
-
+	
 	this.setValue = function (_temp){ 
 		val = _temp; 
 	};	
